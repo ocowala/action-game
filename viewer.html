@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Viewer</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #15161a; color: #ddd; font: 13px/1.4 system-ui, sans-serif; overflow: hidden; }
+      #panel { position: fixed; top: 8px; left: 8px; background: #000a; padding: 10px; border-radius: 6px; width: 260px; }
+      #panel select, #panel button { width: 100%; margin: 3px 0; }
+      #info { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 11px; margin-top: 6px; max-height: 50vh; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+      <b>Asset viewer</b> (dev tool)
+      <select id="model"></select>
+      <select id="clip"></select>
+      <label><input type="checkbox" id="slow" /> 0.25x speed</label>
+      <div id="info"></div>
+    </div>
+    <script type="module" src="/src/viewer.js"></script>
+  </body>
+</html>
