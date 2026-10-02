@@ -1,0 +1,21 @@
+{
+  "name": "snake-brawler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "3D action brawler: a spy fights up a corporate tower, one floor per level. Three.js + Vite.",
+  "type": "module",
+  "scripts": {
+    "assets": "node tools/build-assets.mjs",
+    "dev": "npm run assets && vite",
+    "build": "npm run assets && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  }
+}

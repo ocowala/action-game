@@ -1,0 +1,102 @@
+{
+  "$comment": "Hand-authored timing data, merged with converter output into public/assets/asset_manifest.json by tools/build-assets.mjs. Times are seconds in clip time. Hit times come from the frame of maximum forearm extension (see docs/DESIGN.md). Shapes: socket = sphere at a socket, radial = circle around the root, front = circle `forward` meters ahead, beam = capsule from a socket along the facing direction.",
+  "props": {
+    "crate": { "model": "parking-garage", "node": "crate_1" },
+    "bottle": { "model": "parking-garage", "node": "broken_bottle_1" },
+    "molotov": { "model": "props", "node": "molotov" },
+    "lighter": { "model": "props", "node": "lighter" },
+    "molotov_fire": { "model": "props", "node": "molotov_fire", "scale": 2.2 },
+    "shockwave": { "model": "props", "node": "shockwave_ring", "scale": 1.6 },
+    "trishul": { "model": "props", "node": "trishul" },
+    "trinetra_beam": { "model": "props", "node": "trinetra_beam", "scale": 1.3 }
+  },
+  "models": {
+    "main-character": {
+      "jab": { "hits": [{ "start": 0.1, "end": 0.2, "shape": "socket", "socket": "socket_hand_l", "radius": 0.4 }], "cancelAt": 0.22 },
+      "hook": { "hits": [{ "start": 0.2, "end": 0.32, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 }], "cancelAt": 0.36 },
+      "uppercut": { "hits": [{ "start": 0.24, "end": 0.36, "shape": "socket", "socket": "socket_hand_r", "radius": 0.45 }], "cancelAt": 0.5 },
+      "pickup_heavy": { "events": [{ "t": 0.95, "type": "grab", "prop": "crate", "attach": "between_hands" }] },
+      "throw": { "events": [{ "t": 0.66, "type": "release", "prop": "crate" }] },
+      "pickup_bottle": { "events": [{ "t": 0.6, "type": "grab", "prop": "bottle", "attach": "socket_hand_r" }] },
+      "throw_bottle": { "events": [{ "t": 0.68, "type": "release", "prop": "bottle" }] },
+      "ult_ascend": { "events": [{ "t": 0.45, "type": "vfx", "vfx": "ult_charge" }] }
+    },
+    "gang-member": {
+      "jab": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.1, "end": 0.2, "shape": "socket", "socket": "socket_hand_l", "radius": 0.4 }] },
+      "hook": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.2, "end": 0.32, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 }] }
+    },
+    "gang-member-2": {
+      "jab": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.1, "end": 0.2, "shape": "socket", "socket": "socket_hand_l", "radius": 0.4 }] },
+      "hook": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.2, "end": 0.32, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 }] }
+    },
+    "gang-member-3": {
+      "jab": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.1, "end": 0.2, "shape": "socket", "socket": "socket_hand_l", "radius": 0.4 }] },
+      "pickup_bottle": { "events": [{ "t": 0.6, "type": "grab", "prop": "bottle", "attach": "socket_hand_r" }] },
+      "throw_bottle": { "events": [{ "t": 0.3, "type": "tell" }, { "t": 0.68, "type": "release", "prop": "bottle" }] }
+    },
+    "henchmen": {
+      "jab": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.1, "end": 0.2, "shape": "socket", "socket": "socket_hand_l", "radius": 0.4 }] },
+      "hook": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.2, "end": 0.32, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 }] },
+      "combo_jab_body_hook": {
+        "events": [{ "t": 0, "type": "tell" }],
+        "hits": [
+          { "start": 0.09, "end": 0.18, "shape": "socket", "socket": "socket_hand_l", "radius": 0.4 },
+          { "start": 0.42, "end": 0.55, "shape": "socket", "socket": "socket_hand_r", "radius": 0.45 },
+          { "start": 0.66, "end": 0.84, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 }
+        ]
+      }
+    },
+    "gang-boss": {
+      "jab": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.12, "end": 0.22, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 }] },
+      "cross": { "events": [{ "t": 0, "type": "tell" }], "hits": [{ "start": 0.13, "end": 0.24, "shape": "socket", "socket": "socket_hand_r", "radius": 0.45 }] },
+      "haymaker": { "events": [{ "t": 0, "type": "tell", "heavy": true }], "hits": [{ "start": 0.5, "end": 0.64, "shape": "socket", "socket": "socket_hand_r", "radius": 0.6 }] },
+      "combo_3hit": {
+        "events": [{ "t": 0, "type": "tell" }, { "t": 0.8, "type": "tell", "heavy": true }],
+        "hits": [
+          { "start": 0.12, "end": 0.22, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 },
+          { "start": 0.51, "end": 0.61, "shape": "socket", "socket": "socket_hand_l", "radius": 0.45 },
+          { "start": 1.2, "end": 1.34, "shape": "socket", "socket": "socket_hand_r", "radius": 0.6 }
+        ]
+      },
+      "pickup_heavy": { "events": [{ "t": 0, "type": "tell", "heavy": true }, { "t": 0.95, "type": "grab", "prop": "crate", "attach": "between_hands" }] },
+      "throw": { "events": [{ "t": 0, "type": "tell", "heavy": true }, { "t": 0.73, "type": "release", "prop": "crate" }] },
+      "light_molotov": {
+        "events": [
+          { "t": 0, "type": "tell", "heavy": true },
+          { "t": 0.25, "type": "grab", "prop": "molotov", "attach": "socket_hand_r" },
+          { "t": 0.25, "type": "grab", "prop": "lighter", "attach": "socket_hand_l" },
+          { "t": 0.7, "type": "ignite", "prop": "molotov" },
+          { "t": 1.05, "type": "drop", "prop": "lighter" }
+        ]
+      },
+      "throw_molotov": { "events": [{ "t": 0.4, "type": "release", "prop": "molotov" }] },
+      "phase_change": { "events": [{ "t": 0.55, "type": "vfx", "vfx": "shockwave", "push": 3.5 }] }
+    },
+    "shiva-avatar": {
+      "palm_strike": { "hits": [{ "start": 0.17, "end": 0.3, "shape": "socket", "socket": "socket_hand_l", "radius": 0.65 }], "cancelAt": 0.36 },
+      "tandava_stomp": {
+        "hits": [{ "start": 0.6, "end": 0.7, "shape": "radial", "radius": 3.4 }],
+        "events": [{ "t": 0.62, "type": "vfx", "vfx": "shockwave" }]
+      },
+      "trinetra_agni": {
+        "hits": [{ "start": 1.0, "end": 2.45, "shape": "beam", "socket": "socket_third_eye_point", "length": 5.0, "radius": 0.6, "repeat": 0.18 }],
+        "events": [{ "t": 0.85, "type": "prop", "prop": "trinetra_beam", "attach": "socket_third_eye_point", "play": "trinetra_beam_fire", "removeAfter": 1.65 }]
+      },
+      "trishul_prahar": {
+        "hits": [{ "start": 1.28, "end": 1.46, "shape": "front", "forward": 1.6, "radius": 1.7 }],
+        "events": [
+          { "t": 0.3, "type": "prop", "prop": "trishul", "attach": "socket_trishul_hand_point", "play": "trishul_materialize" },
+          { "t": 1.35, "type": "vfx", "vfx": "shockwave" },
+          { "t": 2.3, "type": "prop", "prop": "trishul", "attach": "socket_trishul_back_point", "play": "trishul_materialize" }
+        ]
+      },
+      "shiva_manifest": {
+        "events": [
+          { "t": 2.6, "type": "prop", "prop": "trishul", "attach": "socket_trishul_back_point", "play": "trishul_materialize" },
+          { "t": 3.0, "type": "vfx", "vfx": "shockwave", "push": 4.5 }
+        ]
+      },
+      "shiva_release": { "events": [{ "t": 0.3, "type": "prop", "prop": "trishul", "play": "trishul_dematerialize", "removeAfter": 0.3 }] }
+    }
+  }
+}
